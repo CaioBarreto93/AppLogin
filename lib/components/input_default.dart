@@ -1,47 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:login/shared/constants.dart';
 
 class InputDefault extends StatelessWidget {
   final String? _labelText;
-  final String? _helperText;
+  final String? _hintText;
   final TextEditingController? _controller;
   final String? Function(String?)? _validator;
-  final int _maxLength;
-  final int _maxLines;
   final TextInputType? _keyboardType;
+  final bool _obscureText;
   final void Function()? _onTap;
 
   const InputDefault({
     String? labelText,
     TextEditingController? controller,
-    String? helperText,
+    String? hintText,
     String? Function(String?)? validator,
-    int? maxLength,
-    int? maxLines,
     TextInputType? keyboardType,
+    bool? obscureText,
     void Function()? onTap,
     super.key,
   })  : _labelText = labelText,
-        _helperText = helperText,
+        _hintText = hintText,
         _controller = controller,
         _validator = validator,
-        _maxLength = maxLength ?? 32,
-        _maxLines = maxLines ?? 1,
         _keyboardType = keyboardType,
+        _obscureText = obscureText ?? false,
         _onTap = onTap;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       onTap: _onTap,
+      obscureText: _obscureText,
       keyboardType: _keyboardType,
-      maxLines: _maxLines,
-      maxLength: _maxLength,
       validator: _validator,
       controller: _controller,
       decoration: InputDecoration(
+        focusedBorder: AppConstants.borderStyle,
+        enabledBorder: AppConstants.borderStyle,
+        border: AppConstants.borderStyle,
+        filled: true,
+        fillColor: Colors.white,
         labelText: _labelText,
-        hintText: _helperText,
-        border: InputBorder.none,
+        hintText: _hintText,
       ),
     );
   }
