@@ -47,20 +47,24 @@ class _MyLoginPageState extends State<MyLoginPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     InputDefault(
-                      key: _email,
                       hintText: "Yourmail@gmail.com",
                       validator: Validator.requiredEmail,
                       keyboardType: TextInputType.emailAddress,
+                      onChanged: (value) {
+                        _email = value;
+                      },
                     ),
                     const Padding(
                       padding: EdgeInsets.all(5.0),
                     ),
                     InputDefault(
-                      key: _senha,
                       hintText: "******",
                       validator: Validator.requiredSenha,
                       keyboardType: TextInputType.text,
                       obscureText: true,
+                      onChanged: (value) {
+                        _senha = value;
+                      },
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 20.0),

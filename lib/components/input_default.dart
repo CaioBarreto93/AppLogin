@@ -9,6 +9,7 @@ class InputDefault extends StatelessWidget {
   final TextInputType? _keyboardType;
   final bool _obscureText;
   final void Function()? _onTap;
+  final void Function(String)? _onChanged;
 
   const InputDefault({
     String? labelText,
@@ -18,6 +19,7 @@ class InputDefault extends StatelessWidget {
     TextInputType? keyboardType,
     bool? obscureText,
     void Function()? onTap,
+    void Function(String)? onChanged,
     super.key,
   })  : _labelText = labelText,
         _hintText = hintText,
@@ -25,7 +27,8 @@ class InputDefault extends StatelessWidget {
         _validator = validator,
         _keyboardType = keyboardType,
         _obscureText = obscureText ?? false,
-        _onTap = onTap;
+        _onTap = onTap,
+        _onChanged = onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +38,7 @@ class InputDefault extends StatelessWidget {
       keyboardType: _keyboardType,
       validator: _validator,
       controller: _controller,
+      onChanged: _onChanged,
       decoration: InputDecoration(
         focusedBorder: AppConstants.borderStyle,
         enabledBorder: AppConstants.borderStyle,
